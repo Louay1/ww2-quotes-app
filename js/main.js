@@ -1,29 +1,22 @@
 
 const url = "https://favqs.com/api/quotes"
-const apiKey = "c4544a4bedfab31b61fcde2e2d132013"
+
+
+// create an account and generate a Key
+const apiKey = "YOUR_API_KEY"
 const heads={
     'Content-Type' : 'application/json',
     'Authorization': `Token token=${apiKey}`
 }
-/*
-async function fetchQuotes(method, headers){
-    req = new Request(url,{
-        method: method,
-        headers: headers
-    })
-    const res = await fetch(req)
-    const data = res.json()
-    console.log(data);
-}
-fetchQuotes('GET', heads)
-*/
 
-
-/*
-let fetchQuotesByID = (url, method,headers, id) => {
-    const req
+const query = {
+    url: url,
+    headers: heads
 }
-*/
+
+//const qBody = document.getElementById('quote').value
+//const qAuth = document.getElementById('author').value
+const addBtn = document.getElementById('addBtn')
 
 const quoteContainer = document.querySelector('.quotes-layout')
 
@@ -36,19 +29,43 @@ function displayData(data){
         </blockquote>
     `).join('')
 }
+
 let fetchQuotes = (url, method, headers) => {
-    // Headers of the request ( Required )
-    req = new Request(url,{
+    const req = new Request(url,{
         method: method,
         headers: headers
     })
     fetch(req)
-    .then((resp => resp.json()))
+    .then((res => res.json()))
     .then((data)=>{
         quotes = data.quotes
         displayData(quotes)
     })
 }
 
+let addQuotes = (query, method='POST') =>{
+
+    const newQuote = {
+        "quote":{
+            "author": qAuth,
+            "body": qBody
+        }
+    }
+    const req = new Request(query.url,{
+        method: method,
+        headers: query.headers,
+        body: newQuote
+    })
+    fetch(req)
+    .then((res) => {
+        res.json()
+        console.log(res);
+    })
+    .then((data)=>{
+        console.log(data);
+    })
+}
+
+//addBtn.onclick = addQuotes(query)
 
 fetchQuotes(url, 'GET', heads)

@@ -91,4 +91,38 @@ body {
     .quotes-layout .quote .author {
       color: #BF0603; }
 
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; }
+  .form-container form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 250px;
+    width: 400px;
+    background-color: #001427; }
+    .form-container form .field {
+      margin: 0.5rem 0;
+      display: flex;
+      flex-direction: column;
+      width: 90%; }
+      .form-container form .field input[type="text"] {
+        border-radius: 6px;
+        border: 0;
+        padding: 0.6rem;
+        width: 100%; }
+
+button {
+  border: 2px solid #F4D58D;
+  border-radius: 50px;
+  background: #BF0603;
+  padding: 0.8rem;
+  color: #F4D58D;
+  width: 100px;
+  font-size: 1rem;
+  font-weight: bolder; }
+
 /*# sourceMappingURL=style.css.map */
